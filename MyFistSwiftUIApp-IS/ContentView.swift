@@ -18,13 +18,20 @@ struct ContentView: View {
     private var genders = ["male", "female", "virgin", "gay", "lesbo", "hermo"]
     
     @State private var selectedGender = 0
-    @State private var amount = 19
+    @State private var amount = 45
     
     var body: some View {
         VStack {
             
-            Stepper("Enater you wallet amount", value: $amount, in: 0...10000)
-            Text("Your wallet amount is \(amount)")
+//            Stepper("Enater you wallet amount", value: $amount, in: 0...100)
+            Stepper("Enter you wallet amount", onIncrement: {
+                self.amount += 10
+                print("Adding to wallet")
+            }, onDecrement: {
+                self.amount -= 10
+                print("Subtracting from wallet")
+            })
+            Text("Your wallet amount is \(amount) bucks")
             
 //            Slider(value: $celsius, in: -100...100, step: 0.1)
 //            Text("The temperature is \(celsius) degree!")
